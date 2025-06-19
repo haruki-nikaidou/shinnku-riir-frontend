@@ -116,7 +116,7 @@
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-[url('/background.webp')] dark:bg-[url('/background-dark.webp')] min-h-screen text-foreground;
+        @apply bg-[url('/background.jpg')] dark:bg-[url('/background-dark.jpg')] min-h-screen text-foreground;
         background-size: cover;
         background-position: center;
     }
