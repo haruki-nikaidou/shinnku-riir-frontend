@@ -1,9 +1,12 @@
 <script lang="ts">
-	import SunIcon from "@lucide/svelte/icons/sun";
-	import MoonIcon from "@lucide/svelte/icons/moon";
-	import Icon from "@iconify/svelte";
-	import { toggleMode } from "mode-watcher";
-	import { Button } from "$lib/components/ui/button/index.js";
+	import SunIcon from '@lucide/svelte/icons/sun';
+	import MoonIcon from '@lucide/svelte/icons/moon';
+	import BookOpen from '@lucide/svelte/icons/book-open';
+	import Archive from '@lucide/svelte/icons/archive';
+	import Info from '@lucide/svelte/icons/info';
+	import Icon from '@iconify/svelte';
+	import { toggleMode } from 'mode-watcher';
+	import { Button } from '$lib/components/ui/button/index.js';
 
 	let { children } = $props();
 </script>
@@ -11,14 +14,39 @@
 
 <header class="w-full bg-card/50 backdrop-blur-md border-b border-b-muted-foreground/20">
 	<nav class="w-full flex justify-between items-center max-w-7xl mx-auto py-2 px-4">
-		<div>
+		<div class="flex items-center gap-2">
 			<a class="flex items-center gap-2" href="/">
-				<img src="/shinnku-logo.png" alt="Shinnku Logo" class="h-10"/>
+				<img src="/shinnku-logo.png" alt="Shinnku Logo" class="h-8 sm:h-10" />
 			</a>
+			<div class="flex sm:hidden items-center gap-1">
+				<Button href="/books" size="icon" variant="ghost">
+					<BookOpen />
+				</Button>
+				<Button href="/files" size="icon" variant="ghost">
+					<Archive />
+				</Button>
+				<Button href="/about" size="icon" variant="ghost">
+					<Info />
+				</Button>
+			</div>
+			<div class="items-center gap-2 hidden sm:flex">
+				<Button href="/docs" variant="ghost">
+					<BookOpen />
+					文档
+				</Button>
+				<Button href="/files" variant="ghost">
+					<Archive />
+					文件
+				</Button>
+				<Button href="/about" variant="ghost">
+					<Info />
+					关于
+				</Button>
+			</div>
 		</div>
 		<div class="flex items-center gap-1">
 			<Button variant="ghost" size="icon" href="https://github.com/shinnku-nikaidou/shinnku-com">
-				<Icon icon="simple-icons:github" class="text-black dark:text-white" />
+				<Icon icon="simple-icons:github"/>
 			</Button>
 			<Button onclick={toggleMode} variant="ghost" size="icon">
 				<SunIcon
@@ -33,6 +61,4 @@
 	</nav>
 </header>
 
-<main class="w-full max-w-7xl mx-auto px-4 py-8">
-	{@render children()}
-</main>
+{@render children()}
