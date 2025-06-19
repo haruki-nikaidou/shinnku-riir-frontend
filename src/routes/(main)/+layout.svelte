@@ -4,6 +4,7 @@
 	import BookOpen from '@lucide/svelte/icons/book-open';
 	import Archive from '@lucide/svelte/icons/archive';
 	import Info from '@lucide/svelte/icons/info';
+	import MessageCircleMore from '@lucide/svelte/icons/message-circle-more';
 	import Icon from '@iconify/svelte';
 	import { toggleMode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button/index.js';
@@ -25,6 +26,9 @@
 				<Button href="/files" size="icon" variant="ghost">
 					<Archive />
 				</Button>
+				<Button href="https://galgame.dev/" size="icon" variant="ghost" target="_blank">
+					<MessageCircleMore />
+				</Button>
 				<Button href="/about" size="icon" variant="ghost">
 					<Info />
 				</Button>
@@ -37,6 +41,10 @@
 				<Button href="/files" variant="ghost">
 					<Archive />
 					文件
+				</Button>
+				<Button href="https://galgame.dev/" variant="ghost" target="_blank">
+					<MessageCircleMore />
+					论坛
 				</Button>
 				<Button href="/about" variant="ghost">
 					<Info />
