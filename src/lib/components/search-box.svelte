@@ -2,17 +2,20 @@
 import { cn } from '@/utils.js';
 import Search from '@lucide/svelte/icons/search';
 import CornerDownLeft from '@lucide/svelte/icons/corner-down-left';
+import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 
 interface Props {
 	searchContent?: string;
 	class?: string;
 	onSearch?: (value: string) => void;
+	isLoading?: boolean;
 }
 
 let {
 	searchContent = $bindable(''),
 	onSearch = () => {},
 	class: className,
+	isLoading = $bindable(false),
 }: Props = $props();
 
 function handleKeyDown(e: KeyboardEvent) {
@@ -29,7 +32,11 @@ function handleKeyDown(e: KeyboardEvent) {
 			"focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
 			className
 		)}>
-	<Search class="text-muted-foreground" />
+	{#if isLoading}
+		<LoaderCircle class="text-muted-foreground animate-spin" />
+	{:else}
+		<Search class="text-muted-foreground" />
+	{/if}
 	<input
 		type="text"
 		bind:value={searchContent}

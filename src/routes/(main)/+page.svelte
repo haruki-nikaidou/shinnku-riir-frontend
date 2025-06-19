@@ -4,9 +4,13 @@
 	import { goto } from '$app/navigation';
 	import SearchBox from '$lib/components/search-box.svelte';
 
+	let loading = $state(false);
+
 	function handleSearch(searchContent: string) {
+		loading = true;
 		goto(`/search?s=${encodeURIComponent(searchContent)}`);
 	}
+
 </script>
 
 
@@ -25,9 +29,9 @@
 		<Card.Content>
 			<SearchBox
 				onSearch={handleSearch}
+				bind:isLoading={loading}
 				class="my-8 mx-auto"
 			/>
-
 			<div class="flex gap-4 my-8 items-center justify-center">
 				<Button size="lg" href="/files">
 					浏览全部游戏
@@ -39,7 +43,6 @@
 			<div class="mt-16 h-16 text-center w-full max-w-2xl mx-auto rounded-xl bg-muted border border-foreground/10 p-4">
 				<p>AD</p>
 			</div>
-
 		</Card.Content>
 	</Card.Root>
 </main>
